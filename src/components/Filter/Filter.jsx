@@ -5,11 +5,11 @@ import css from './Filter.module.css';
 
 // Компонент фільтрації контактів
 const Filter = () => {
-  const value = useSelector(getFilter);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  const onChangeFilter = event => {
-    const newValue = event.target.value;
+  const onChangeFilter = ({ currentTarget: { value } }) => {
+    const newValue = value.toLowerCase();
     dispatch(changeFilter(newValue));
   };
   return (
@@ -20,7 +20,7 @@ const Filter = () => {
           type="text"
           name="filter"
           className={css.input}
-          value={value}
+          value={filter}
           onChange={onChangeFilter}
         />
       </label>

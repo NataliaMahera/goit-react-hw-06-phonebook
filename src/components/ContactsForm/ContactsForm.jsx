@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import css from './ContactsForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVisibleContacts } from 'redux/selectors';
+import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/contacts-slice';
+import css from './ContactsForm.module.css';
 
 const ContactsForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(getVisibleContacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   // Обробка відправки форми
